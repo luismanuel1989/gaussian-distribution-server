@@ -21,13 +21,30 @@ let generateArray = () => {
 
 
     while (currentIteration < amountIterations) {
-        const randomInt = randomNormal(50, 25)
+        const randomInt = randomFromScratch() //randomNormal(50, 25)
         array.push(randomInt)
         currentIteration++
     }
 
     return array
 }
+
+let randomFromScratch = (initialValue = 50, iterations = 50) => {
+    while (iterations > -1) {
+        let firstRandom = Math.random()
+        let secondRandom = Math.random()
+        let thirdRandom = Math.random()
+
+        
+        firstRandom > 0.5 ? initialValue ++ : initialValue --
+        secondRandom > 0.5 ? initialValue ++ : initialValue --
+        thirdRandom > 0.7 && initialValue ++
+        thirdRandom < 0.3 && initialValue --
+        iterations --
+    }
+    return initialValue
+}
+
 function randomNormal(mean = 0, standardDeviation = 1) {
     const u1 = Math.random();
     const u2 = Math.random();
